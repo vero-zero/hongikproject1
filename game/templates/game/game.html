@@ -17,10 +17,13 @@
     
       {% csrf_token %} 
       <label for="img_name{{ forloop.counter }}">이름:</label>
-      <input type="text" name="img_name" id="img_name{{ forloop.counter }}">
-      <input type="submit" onclick="next(end/end.html)"value="pass">
+      <div >
+
+        <input type="text" name="img_name" id="img_name{{ forloop.counter }}">
+        <input type="submit" onclick="next(end/end.html)"value="pass">
+      </div>
    </form>
-      <div>
+      <div class="nxet-page">
        <span id="button">
          <form action="/main/startmain/" method="post">
                      {% csrf_token %}
@@ -45,8 +48,13 @@
     function show() {
       selected_imgs[idx].style.display = 'none';
       idx += 1;
+      if (idx >= selected_imgs.length) {
+        clearInterval(time);
+        return;
+      }
       selected_imgs[idx].style.display = 'block';
     }
+
 
     let time = setInterval(show, 5000);
 
