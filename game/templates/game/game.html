@@ -17,20 +17,20 @@
     
       {% csrf_token %} 
       <label for="img_name{{ forloop.counter }}">이름:</label>
-      <input type="text" name="img_name" id="img_name{{ forloop.counter }}" required>
-      <input type="submit" onclick="next(end/end.html)"value="제출">
-    </form>
-    
+      <input type="text" name="img_name" id="img_name{{ forloop.counter }}">
+      <input type="submit" onclick="next(end/end.html)"value="pass">
+   </form>
+      <div>
+       <span id="button">
+         <form action="/main/startmain/" method="post">
+                     {% csrf_token %}
+                         <button>
+                             결과화면이동
+                         </button>
+      </div> 
+   
   </div>
   {% endfor %}
-<!--   <div>
-    <span id="button">
-      <form action="/main/startmain/" method="post">
-                  {% csrf_token %}
-                      <button>
-                          결과화면이동
-                      </button>
-  </div> -->
 
   <form method="post" id="next-form" style="display: none;">
     {% csrf_token %}
