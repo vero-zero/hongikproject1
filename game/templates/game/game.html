@@ -40,6 +40,8 @@
           idx += 1;
           if (idx >= selected_imgs.length) {
             clearInterval(time);
+            const nxetPage = document.querySelector('.nxet-page');
+            nxetPage.style.display = 'block';
             return;
           }
           selected_imgs[idx].style.display = 'block';
@@ -49,7 +51,7 @@
           clearInterval(time);
           show();
           time = setInterval(show, 5000);
-        }  
+        } 
     </script>
     {% endblock %}
   </body>

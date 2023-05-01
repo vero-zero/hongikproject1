@@ -26,6 +26,7 @@ def startgame(request):
                     score += 0
             else :
                 score += 0
+        
                 # 5초 동안 대기
 
     user = Main_User.objects.latest('nickname')
