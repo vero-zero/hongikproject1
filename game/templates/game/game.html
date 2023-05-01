@@ -20,26 +20,26 @@
       <div >
 
         <input type="text" name="img_name" id="img_name{{ forloop.counter }}">
-        <input type="submit" onclick="next(end/end.html)"value="pass">
+        <input type="submit" onclick=""value="pass">
       </div>
    </form>
-      <div class="nxet-page">
-       <span id="button">
-         <form action="/main/startmain/" method="post">
-                     {% csrf_token %}
-                         <button>
-                             결과화면이동
-                         </button>
-      </div> 
-   
   </div>
   {% endfor %}
 
   <form method="post" id="next-form" style="display: none;">
     {% csrf_token %}
-    <input type="hidden" name="img_name" value="pass">
+    <input type="submit" name="img_name" value="pass">
     <input type="submit" id="next-submit">
   </form>
+      <div class="nxet-page">
+        {% csrf_token %}
+        
+                 <form action="/end/endgame/" method="post">
+                         <button id="button" type="button">
+                             결과화면이동
+                         </button>
+      </div> 
+   
   <script>
     const selected_imgs = document.querySelectorAll('.selected_img');
     let idx = 0
