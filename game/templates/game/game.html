@@ -1,72 +1,56 @@
 
 <!DOCTYPE html>
-
-
-<body>
-  {% block content %}
-  <style>
-    .selected_img {
-      display: none;
-    }
-  </style>
-  <h1></h1>
-  {% for MyModel in selected_imgs %}
-  <div class='selected_img'>
-    <img src='/static{{ MyModel }}' style="width:100px">
-    <form method="post" id="form{{ forloop.counter }}">
-    
-      {% csrf_token %} 
-      <label for="img_name{{ forloop.counter }}">이름:</label>
-      <div >
-
-        <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요.">
-        <input type="button" onclick="next()" value="PASS" >
-      </div>
+  <body>
+    {% block content %}
+    <style>
+      .selected_img {
+        display: none;
+      }
+      .nxet-page {
+        display: none;
+      }
+    </style>
+    {% for MyModel in selected_imgs %}
+    <div class='selected_img'>
+      <img src='/static{{ MyModel }}' style="width:100px">
+      <form method="post" id="form{{ forloop.counter }}">
+        {% csrf_token %} 
+        <div class = "answer">
+          <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요.">
+          <input type="button" onclick="next()" value="PASS" >
+        </div>
+      </form>
+    </div>
+    {% endfor %}
     </form>
-  </div>
-  {% endfor %}
-  
-  {% csrf_token %}
-
-  </form>
-      <div class="nxet-page">
-        {% csrf_token %}
-                 <form action="/end/endgame/" method="post">
-                         <button id="button" type="button">
-                             결과화면이동
-                         </button>
-                         </form>
-                         
-      </div> 
-   
-  <script>
-    const selected_imgs = document.querySelectorAll('.selected_img');
-    let idx = 0
-    selected_imgs[idx].style.display = 'block';
-    
-      function show() {
-        selected_imgs[idx].style.display = 'none';
-        idx += 1;
-        if (idx >= selected_imgs.length) {
-          clearInterval(time);
-          return;
+    <div class="nxet-page">
+      {% csrf_token %}
+      <form action="/end/endgame/" method="post">
+        <button id="button" type="button" >
+          결과화면이동
+        </button>
+      </form>             
+    </div> 
+    <script>
+      const selected_imgs = document.querySelectorAll('.selected_img');
+      let idx = 0
+      selected_imgs[idx].style.display = 'block';
+        function show() {
+          selected_imgs[idx].style.display = 'none';
+          idx += 1;
+          if (idx >= selected_imgs.length) {
+            clearInterval(time);
+            return;
+          }
+          selected_imgs[idx].style.display = 'block';
         }
-        selected_imgs[idx].style.display = 'block';
-      }
-
-
-      let time = setInterval(show, 5000);
-
-      function next() {
-        clearInterval(time);
-        show();
-        time = setInterval(show, 5000);
-      }
-    // show 함수 실행
-    
-  
-
-  </script>
-  {% endblock %}
+        let time = setInterval(show, 5000);
+        function next() {
+          clearInterval(time);
+          show();
+          time = setInterval(show, 5000);
+        }  
+    </script>
+    {% endblock %}
   </body>
-  </html> 
+</html> 
