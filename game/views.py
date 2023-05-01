@@ -12,12 +12,12 @@ def startgame(request):
     items =MyModel.objects.all()
     img_list = [item.img.url for item in items]
     print(img_list)
-    selected_imgs = random.sample(img_list, 20)
+    selected_imgs = random.sample(set(img_list), 20)
     context = {'selected_imgs':selected_imgs}
     score = 0
     user_input_name = request.POST.get('img_name')
     # score = Main_User.objects.latest('nickname').score
-    for i, selected_img in enumerate(selected_imgs):
+    for  selected_img in enumerate(selected_imgs):
         if request.method == 'POST':
             context['selected_img'] = selected_img
             if request.POST.get('img_name'):
@@ -28,6 +28,7 @@ def startgame(request):
             else :
                 score += 0
                 # 5초 동안 대기
+
     user = Main_User.objects.latest('nickname')
     user.score = score
     user.save()
