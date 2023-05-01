@@ -19,50 +19,52 @@
       <label for="img_name{{ forloop.counter }}">이름:</label>
       <div >
 
-        <input type="text" name="img_name" id="img_name{{ forloop.counter }}">
-        <input type="submit" onclick=""value="pass">
+        <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요.">
+        <input type="button" onclick="next()" value="PASS" >
       </div>
-   </form>
+    </form>
   </div>
   {% endfor %}
+  
+  {% csrf_token %}
 
-  <form method="post" id="next-form" style="display: none;">
-    {% csrf_token %}
-    <input type="submit" name="img_name" value="pass">
-    <input type="submit" id="next-submit">
   </form>
       <div class="nxet-page">
         {% csrf_token %}
-        
                  <form action="/end/endgame/" method="post">
                          <button id="button" type="button">
                              결과화면이동
                          </button>
+                         </form>
+                         
       </div> 
    
   <script>
     const selected_imgs = document.querySelectorAll('.selected_img');
     let idx = 0
     selected_imgs[idx].style.display = 'block';
-
-    function show() {
-      selected_imgs[idx].style.display = 'none';
-      idx += 1;
-      if (idx >= selected_imgs.length) {
-        clearInterval(time);
-        return;
+    
+      function show() {
+        selected_imgs[idx].style.display = 'none';
+        idx += 1;
+        if (idx >= selected_imgs.length) {
+          clearInterval(time);
+          return;
+        }
+        selected_imgs[idx].style.display = 'block';
       }
-      selected_imgs[idx].style.display = 'block';
-    }
 
 
-    let time = setInterval(show, 5000);
+      let time = setInterval(show, 5000);
 
-    function next() {
-      clearInterval(time);
-      show();
-      time = setInterval(show, 5000);
-    }
+      function next() {
+        clearInterval(time);
+        show();
+        time = setInterval(show, 5000);
+      }
+    // show 함수 실행
+    
+  
 
   </script>
   {% endblock %}

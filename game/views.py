@@ -11,7 +11,6 @@ def startgame(request):
     # DB에서 이미지 목록 가져오기
     items =MyModel.objects.all()
     img_list = [item.img.url for item in items]
-    print(img_list)
     selected_imgs = random.sample(set(img_list), 20)
     context = {'selected_imgs':selected_imgs}
     score = 0
