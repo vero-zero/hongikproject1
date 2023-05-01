@@ -15,14 +15,17 @@
       <img src='/static{{ MyModel }}' style="width:100px">
       <form method="post" id="form{{ forloop.counter }}">
         {% csrf_token %} 
-        <div class = "answer">
-          <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요.">
-          <input type="button" onclick="next()" value="PASS" >
-        </div>
       </form>
-    </div>
+    </div>    
     {% endfor %}
+
+    <form method="get" id="inputElement">
+      <div class = "answer">
+        <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요." autofocus>
+        <input calss="pass" type="button" onclick="next()" value="PASS" >
+      </div>
     </form>
+
     <div class="nxet-page">
       {% csrf_token %}
       <form action="/end/endgame/" method="post">
@@ -32,6 +35,8 @@
       </form>             
     </div> 
     <script>
+
+      
       const selected_imgs = document.querySelectorAll('.selected_img');
       let idx = 0
       selected_imgs[idx].style.display = 'block';
@@ -42,6 +47,8 @@
             clearInterval(time);
             const nxetPage = document.querySelector('.nxet-page');
             nxetPage.style.display = 'block';
+            const answerDisplay = document.querySelector('.answer');
+            answerDisplay.style.display = 'none';
             return;
           }
           selected_imgs[idx].style.display = 'block';
@@ -51,7 +58,13 @@
           clearInterval(time);
           show();
           time = setInterval(show, 5000);
-        } 
+          const inputElement = document.getElementById('img_name{{ forloop.counter }}');
+          inputElement.focus();
+        }
+        
+        let passkey = document.querySelector('.pass').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter'){
+        }});
     </script>
     {% endblock %}
   </body>
