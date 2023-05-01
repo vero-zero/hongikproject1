@@ -1,20 +1,26 @@
 
 <!DOCTYPE html>
+<head>
+  <title>WAYgame</title>
+  <link rel="stylesheet" href="/static/game/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+</head>
 
 
 <body>
   {% block content %}
-  <style>
-    .selected_img {
-      display: none;
-    }
-  </style>
-  <h1></h1>
+  <talbe>
+  <h1>누구일까요?</h1>
   {% for MyModel in selected_imgs %}
   <div class='selected_img'>
-    <img src='/static{{ MyModel }}' style="width:100px">
+    <span class="image-caption">
+    <img src='/static{{ MyModel }}' class='image-wrapper'>
+    </span>
     <form method="post" id="form{{ forloop.counter }}">
-    
+    </talbe>
+      <br><br>
       {% csrf_token %} 
       <label for="img_name{{ forloop.counter }}">이름:</label>
       <input type="text" name="img_name" id="img_name{{ forloop.counter }}" required>
@@ -37,6 +43,38 @@
     <input type="hidden" name="img_name" value="pass">
     <input type="submit" id="next-submit">
   </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   <script>
     const selected_imgs = document.querySelectorAll('.selected_img');
     let idx = 0
