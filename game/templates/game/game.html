@@ -5,7 +5,7 @@
       .selected_img {
         display: none;
       }
-      .nxet-page {
+      .next-page {
         display: none;
       }
     </style>
@@ -25,10 +25,10 @@
     </div>    
     {% endfor %}
     
-    <div class="nxet-page">
+    <div class="next-page">
       {% csrf_token %}
       <form method="post">
-        <button id="button" type="button" onclick="/end/endgame/">
+        <button id="button" type="button" onclick="location = '/end/endgame/'">
           결과화면이동
         </button>
       </form>             
@@ -39,16 +39,16 @@
       let idx = 0
       selected_imgs[idx].style.display = 'block';
         function show() {
-          selected_imgs[idx].style.display = 'none';
-          idx += 1;
-          if (idx >= selected_imgs.length) {
+          if (idx+1 >= selected_imgs.length) {
             clearInterval(time);
-            const nxetPage = document.querySelector('.nxet-page');
+            const nxetPage = document.querySelector('.next-page');
             nxetPage.style.display = 'block';
-            const answerDisplay = document.querySelector('.answer');
+            const answerDisplay = document.querySelector('.selected_img:nth-of-type(20)');
             answerDisplay.style.display = 'none';
             return;
           }
+          selected_imgs[idx].style.display = 'none';
+          idx += 1;
           selected_imgs[idx].style.display = 'block';
         }
         let time = setInterval(show, 5000);
