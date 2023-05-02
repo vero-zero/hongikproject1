@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<head>
+  <title>WAYgame</title>
+  <link rel="stylesheet" href="/static/game/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+</head>
   <body>
     {% block content %}
     <style>
@@ -12,10 +19,13 @@
     <form method="post" id="inputElement">
     {% for MyModel in selected_imgs %}
     <div class='selected_img'>
+      <h1>
+        누구일까요?
+      </h1>
       <img src='/static{{ MyModel }}' style="width:100px">
         {% csrf_token %} 
           {% csrf_token %} 
-          <div class = "answer">
+          <div class = "answer"> 이름 : 
             <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요." >
             <button id="pass" type="button" onclick="next()" value="PASS">PASS</button>
           </div>

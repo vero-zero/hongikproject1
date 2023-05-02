@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-게임화면 적용
-
-=======
->>>>>>> 390b263e16fc80324c641a0bade02c20dffdb169
 body {
+  text-align: center;
   font-family: 'Gowun Dodum', sans-serif;
   background-color: #F9EBFF;
 }
@@ -14,7 +10,7 @@ h1 {
   margin-top: 10px;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 0px;
   color: #8B03D6;
   font-weight: bold;
@@ -29,25 +25,16 @@ h1 {
 }
 
 .selected_img .image-caption {
+  width: auto;
+  height: 280px;
   position: relative;
-  display: inline-block;
+  margin-top: 30px;
 }
 
-.selected_img .image-wrapper {
+.selected_img .src{
   max-width: auto;
   max-height: 280px;
-}
-
-form {
-  color: #FC268F;
-  font-weight: bolder;
-  font-size: 25px;
-  align-items: center;
-  justify-content: center;
-  margin-top: -50px;
-  margin-bottom: 0px;
-  width: auto;
-  height: 100px;
+  width:100px;
 }
 
 label {
@@ -58,31 +45,40 @@ label {
   
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 390b263e16fc80324c641a0bade02c20dffdb169
-input[type="text"] {
+ /* 선택자확인 */
+ input[type="text"]{
   padding: 5px;
   border-radius: 5px;
   border: none;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   height: 30px;
-  margin-top: -10px;
-  margin-bottom: 0px;
 }
 
-input[type="submit"] {
+
+button[type="button"] {
+  font-size: 15px; 
   background-color: #ff837c;
   color: #fff;
   padding: 10px;
-  border-radius: 5px;
   border: none;
-  box-shadow: 0px 0px 10px #FC268F;
   cursor: pointer;
   width: 80px;
   height: 40px;
   margin: 10px auto 0;
   text-align: center;
   line-height: 10px;
+}
+
+button[id = "button"] {
+  font-size: 15px; 
+  background-color: #ff837c;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 120px;
+  height: 40px;
+  margin: 10px auto 0;
+  margin-top: 100px;
+
 }
