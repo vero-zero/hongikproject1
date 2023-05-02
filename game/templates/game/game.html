@@ -9,64 +9,66 @@
         display: none;
       }
     </style>
+    <form method="post" id="inputElement">
     {% for MyModel in selected_imgs %}
     <div class='selected_img'>
       <img src='/static{{ MyModel }}' style="width:100px">
-      <form method="post" id="form{{ forloop.counter }}">
         {% csrf_token %} 
-        <form method="get" id="inputElement">
           {% csrf_token %} 
           <div class = "answer">
             <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요." >
-            <button id="pass" type="submit" onclick="next()" value="PASS">PASS</button>
+            <button id="pass" type="button" onclick="next()" value="PASS">PASS</button>
           </div>
-        </form>
-      </form>
-    </div>    
-    {% endfor %}
-    
-    <div class="next-page">
-      {% csrf_token %}
-      <form method="post"{% comment %} action="/main/startmain/" {% endcomment %}>
-        <button id="button" type="submit" onclick="location = '/game/stertgame/'">
-          결과화면이동
-        </button>
-      </form>             
-    </div> 
+      </div>    
+      {% endfor %}
+      
+      <div class="next-page">
+        {% csrf_token %}
+          <button id="button" type="button" onclick="send()">
+            결과보기
+          </button>
+      </div> 
+    </form>
     <script>
+      function send() {
+        document.querySelector('#inputElement').submit()
+      }
       
       const selected_imgs = document.querySelectorAll('.selected_img');
       let idx = 0
-      selected_imgs[idx].style.display = 'block';
+      show()
         function show() {
-          if (idx+1 >= selected_imgs.length) {
+          if (idx >= selected_imgs.length) {
             clearInterval(time);
             const nxetPage = document.querySelector('.next-page');
             nxetPage.style.display = 'block';
-            const answerDisplay = document.querySelector('.selected_img:nth-of-type(20)');
+            const answerDisplay = document.querySelector('.active');
             answerDisplay.style.display = 'none';
             return;
           }
-          selected_imgs[idx].style.display = 'none';
-          idx += 1;
+          if(idx > 0) {
+            selected_imgs[idx-1].style.display = 'none';
+            selected_imgs[idx-1].classList.remove('active')
+          }
           selected_imgs[idx].style.display = 'block';
+          selected_imgs[idx].classList.add('active')
+          selected_imgs[idx].querySelector('[name=img_name]').focus()
+          idx += 1;
         }
         let time = setInterval(show, 5000);
         function next() {
           clearInterval(time);
           show();
           time = setInterval(show, 5000);
-           //const inputElement = document.getElementById('img_name{{ forloop.counter }}');
-          //inputElement.focus();
         }
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keyup', function(event) {
           if (event.code === 'Enter') {
             event.preventDefault();
             next();
           }
         });
-        
-        
+        // let count = document.getElementById('img_name{{ forloop.counter }}'')
+
     </script>
     {% endblock %}
   </body>

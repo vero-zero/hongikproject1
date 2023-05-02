@@ -14,6 +14,9 @@ def startmain(request):
             u.nickname = name
             u.save()
             print(2, name)
+            request.session['id'] = u.id
+            request.session['nickname'] = u.nickname
+
             return redirect('/game/startgame/',{})
         return render(request, 'main/main.html', {})
     return render(request, 'main/main.html', {})

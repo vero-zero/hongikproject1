@@ -3,7 +3,8 @@ from main.models import Main_User
 # Create your views here.
 
 def endgame(request):
-    lastuser =  Main_User.objects.latest('id')
-    lastnick = lastuser.nickname
-    lastscore = lastuser.score
-    return render (request, 'end/end.html' , {'lastnick':lastnick,'lastscore':lastscore})
+    id = request.session.get('id')
+    user =  Main_User.objects.get(id=id)
+    nickname = user.nickname
+    score = user.score
+    return render (request, 'end/end.html' , {'user': user})
