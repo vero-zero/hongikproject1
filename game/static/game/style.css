@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 게임화면 적용
 
+=======
+>>>>>>> 390b263e16fc80324c641a0bade02c20dffdb169
 body {
   font-family: 'Gowun Dodum', sans-serif;
   background-color: #F9EBFF;
@@ -55,6 +58,10 @@ label {
   
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 390b263e16fc80324c641a0bade02c20dffdb169
 input[type="text"] {
   padding: 5px;
   border-radius: 5px;

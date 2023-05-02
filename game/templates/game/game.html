@@ -1,30 +1,43 @@
 <!DOCTYPE html>
-  <body>
-    {% block content %}
-    <style>
-      .selected_img {
-        display: none;
-      }
-      .nxet-page {
-        display: none;
-      }
-    </style>
-    {% for MyModel in selected_imgs %}
-    <div class='selected_img'>
-      <img src='/static{{ MyModel }}' style="width:100px">
-      <form method="post" id="form{{ forloop.counter }}">
-        {% csrf_token %} 
-      </form>
-    </div>    
-    {% endfor %}
+<head>
+  <title>WAYgame</title>
+  <link rel="stylesheet" href="/static/game/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+</head>
 
-    <form method="get" id="inputElement">
-      <div class = "answer">
-        <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요." autofocus>
-        <input calss="pass" type="button" onclick="next()" value="PASS" >
-      </div>
+
+<body>
+  {% block content %}
+  <talbe>
+  <h1>누구일까요?</h1>
+  {% for MyModel in selected_imgs %}
+  <div class='selected_img'>
+    <span class="image-caption">
+    <img src='/static{{ MyModel }}' class='image-wrapper'>
+    </span>
+    <form method="post" id="form{{ forloop.counter }}">
+    </talbe>
+      <br><br>
+      {% csrf_token %} 
+      <label for="img_name{{ forloop.counter }}">이름:</label>
+      <input type="text" name="img_name" id="img_name{{ forloop.counter }}" required>
+      <input type="submit" onclick="next(end/end.html)"value="제출">
     </form>
+    
+  </div>
+  {% endfor %}
+<!--   <div>
+    <span id="button">
+      <form action="/main/startmain/" method="post">
+                  {% csrf_token %}
+                      <button>
+                          결과화면이동
+                      </button>
+  </div> -->
 
+<<<<<<< HEAD
     <div class="nxet-page">
       {% csrf_token %}
       <form action="/end/endgame/" method="post">
@@ -36,33 +49,37 @@
     <script>   
       const selected_imgs = document.querySelectorAll('.selected_img');
       let idx = 0
+=======
+  <form method="post" id="next-form" style="display: none;">
+    {% csrf_token %}
+    <input type="hidden" name="img_name" value="pass">
+    <input type="submit" id="next-submit">
+  </form>
+  <script>
+    const selected_imgs = document.querySelectorAll('.selected_img');
+    let idx = 0
+    selected_imgs[idx].style.display = 'block';
+
+    function show() {
+      selected_imgs[idx].style.display = 'none';
+      idx += 1;
+>>>>>>> 390b263e16fc80324c641a0bade02c20dffdb169
       selected_imgs[idx].style.display = 'block';
-        function show() {
-          selected_imgs[idx].style.display = 'none';
-          idx += 1;
-          if (idx >= selected_imgs.length) {
-            clearInterval(time);
-            const nxetPage = document.querySelector('.nxet-page');
-            nxetPage.style.display = 'block';
-            const answerDisplay = document.querySelector('.answer');
-            answerDisplay.style.display = 'none';
-            return;
-          }
-          selected_imgs[idx].style.display = 'block';
-        }
-        let time = setInterval(show, 5000);
-        function next() {
-          clearInterval(time);
-          show();
-          time = setInterval(show, 5000);
-          const inputElement = document.getElementById('img_name{{ forloop.counter }}');
-          inputElement.focus();
-        }
-        
-        let passkey = document.querySelector('.pass').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter'){
-        }});
-    </script>
-    {% endblock %}
+    }
+
+    let time = setInterval(show, 5000);
+
+    function next() {
+      clearInterval(time);
+      show();
+      time = setInterval(show, 5000);
+    }
+
+  </script>
+  {% endblock %}
   </body>
 </html> 
+<<<<<<< HEAD
+=======
+dddd
+>>>>>>> 390b263e16fc80324c641a0bade02c20dffdb169
