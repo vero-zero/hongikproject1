@@ -1,0 +1,82 @@
+게임화면 적용
+
+body {
+  font-family: 'Gowun Dodum', sans-serif;
+  background-color: #F9EBFF;
+}
+
+h1 {
+  font-size: 25px;
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: #8B03D6;
+  font-weight: bold;
+}
+
+.selected_img {
+  position: relative;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 100px;
+  display: none;
+}
+
+.selected_img .image-caption {
+  position: relative;
+  display: inline-block;
+}
+
+.selected_img .image-wrapper {
+  max-width: auto;
+  max-height: 280px;
+}
+
+form {
+  color: #FC268F;
+  font-weight: bolder;
+  font-size: 25px;
+  align-items: center;
+  justify-content: center;
+  margin-top: -50px;
+  margin-bottom: 0px;
+  width: auto;
+  height: 100px;
+}
+
+label {
+  font-size: 25px; 
+  font-weight: bold; 
+  margin-top: 0px;
+  margin-bottom: 10px;
+  
+}
+
+
+input[type="text"] {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  height: 30px;
+  margin-top: -10px;
+  margin-bottom: 0px;
+}
+
+input[type="submit"] {
+  background-color: #ff837c;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 0px 10px #FC268F;
+  cursor: pointer;
+  width: 80px;
+  height: 40px;
+  margin: 10px auto 0;
+  text-align: center;
+  line-height: 10px;
+}
