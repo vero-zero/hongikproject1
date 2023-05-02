@@ -1,59 +1,52 @@
+<style>
 
-.starwars {
-    font-size: 48px;
-    line-height: 56px;
-    font-family: Arial, sans-serif;
-    position: relative;
-    height: 56px;
-    overflow: hidden;
+  /* 스타워즈 엔딩 CSS */
+@keyframes crawl {
+  from {
+    transform: translateZ(0);
+    opacity: 1;
   }
-  
-  .starwars p {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    line-height: 56px;
-    text-align: center;
-    color: black;
+  to {
+    transform: translateZ(-5000px) translateY(-100vh);
     opacity: 0;
-    transform: translateY(-100%);
-    animation: starwars 3s linear infinite;
   }
-  
-  .starwars p:nth-child(2) {
-    animation-delay: 1s;
-  }
-  
-  .starwars p:nth-child(3) {
-    animation-delay: 2s;
-  }
-  
-  @keyframes starwars {
-    0% {
-      opacity: 0;
-      transform: translateY(-100%);
-    }
-    5% {
-      opacity: 1;
-    }
-    95% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(100%);
-    }
-  }
-<body>
-{% for mvp in mvplist %}
-{{mvp.nickname}}<br>
+}
+#starwars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: yellow;
+  font-size: 2rem;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+#starwars .crawl {
+  animation: crawl 20s linear;
+  transform: translateZ(0);
+  opacity: 1;
+}
 
-{% endfor %}
+</style>
+<body>
+  
+  
+  <!-- 스타워즈 엔딩 템플릿 -->
+  <div id="starwars">
+    <div class="crawl">
+      
+      <h1> 영광의 MVP  </h1>
+    <ul>
+      {% for mvp in mvplist %}
+      <li>{{mvp.nickname}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 </body>
 
-<div class="starwars">
-    <p>타이틀1</p>
-    <p>타이틀2</p>
-    <p>타이틀3</p>
-  </div
