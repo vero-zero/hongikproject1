@@ -1,5 +1,5 @@
 <style>
-    /* 스타워즈 엔딩 CSS */
+  /* 스타워즈 엔딩 CSS */
   @keyframes crawl {
     from {
       transform: translateZ(0);
@@ -22,7 +22,7 @@
     background-color: black;
     color: yellow;
     font-size: 2rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     overflow: hidden;
   }
   #starwars .crawl {
@@ -30,18 +30,40 @@
     transform: translateZ(0);
     opacity: 1;
   }
+
+  #redirect-button {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    background-color: yellow;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 </style>
 <body>
-    <!-- 스타워즈 엔딩 템플릿 -->
-    <div id="starwars">
-        <div class="crawl">
-        
-        <h1> 영광의 MVP  </h1>
-        <ul>
+  <!-- 스타워즈 엔딩 템플릿 -->
+  <div id="starwars">
+    <div class="crawl">
+      <h1>영광의 MVP</h1>
+      <ul>
         {% for mvp in mvplist %}
         <li>{{mvp.nickname}}</li>
         {% endfor %}
-        </ul>
-        </div>
+      </ul>
     </div>
-</body>
+  </div>
+
+   <!-- 버튼 -->
+   <button id="redirect-button">메인 화면으로</button>
+
+   <script>
+     // 버튼 클릭 이벤트 처리
+     document.getElementById("redirect-button").addEventListener("click", function() {
+       window.location.href = "http://127.0.0.1:8000/main/startmain/";
+     });
+   </script>
+ </body>
