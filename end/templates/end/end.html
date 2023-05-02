@@ -1,7 +1,21 @@
-  {% csrf_token %}
+{% csrf_token %}
 
-  <hr>
-  {{nickname_list}}
-  <hr>
-  {{score_list}}
-  <hr>
+<hr>
+{{lastnick}}
+{{lastscore}}
+<hr>
+
+<button onclick="redirect1()">Restart</button>
+<button onclick="redirect2()">명예의전당</button>
+
+<script>
+function redirect1() {
+  window.location.href = "http://127.0.0.1:8000/main/startmain/";
+}
+
+function redirect2() {
+    window.location.href = "http://127.0.0.1:8000/mvp/mvplist/";
+  }
+
+
+</script>
