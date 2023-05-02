@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
   <body>
     {% block content %}
@@ -15,27 +14,26 @@
       <img src='/static{{ MyModel }}' style="width:100px">
       <form method="post" id="form{{ forloop.counter }}">
         {% csrf_token %} 
+        <form method="get" id="inputElement">
+          {% csrf_token %} 
+          <div class = "answer">
+            <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요." >
+            <button id="pass" type="submit" onclick="next()" value="PASS">PASS</button>
+          </div>
+        </form>
       </form>
     </div>    
     {% endfor %}
-
-    <form method="get" id="inputElement">
-      <div class = "answer">
-        <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요." autofocus>
-        <input calss="pass" type="button" onclick="next()" value="PASS" >
-      </div>
-    </form>
-
+    
     <div class="nxet-page">
       {% csrf_token %}
-      <form action="/end/endgame/" method="post">
-        <button id="button" type="button" >
+      <form method="post">
+        <button id="button" type="button" onclick="/end/endgame/">
           결과화면이동
         </button>
       </form>             
     </div> 
     <script>
-
       
       const selected_imgs = document.querySelectorAll('.selected_img');
       let idx = 0
@@ -58,13 +56,17 @@
           clearInterval(time);
           show();
           time = setInterval(show, 5000);
-          const inputElement = document.getElementById('img_name{{ forloop.counter }}');
-          inputElement.focus();
+           //const inputElement = document.getElementById('img_name{{ forloop.counter }}');
+          //inputElement.focus();
         }
+        document.addEventListener('keydown', function(event) {
+          if (event.code === 'Enter') {
+            event.preventDefault();
+            next();
+          }
+        });
         
-        let passkey = document.querySelector('.pass').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter'){
-        }});
+        
     </script>
     {% endblock %}
   </body>
