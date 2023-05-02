@@ -4,7 +4,6 @@ from .models import MyModel #User_Score
 from main.models import Main_User
 
 import random
-import time
 
 def startgame(request):
     #User_Score.objects.create(nickname=Main_User.nickname)
@@ -19,15 +18,9 @@ def startgame(request):
     for  selected_img in enumerate(selected_imgs):
         if request.method == 'POST':
             context['selected_img'] = selected_img
-            if request.POST.get('img_name'):
+            if  user_input_name is not None and user_input_name.strip():
                 if MyModel.objects.filter(name=user_input_name).exists():
                     score += 1
-                else :
-                    score += 0
-            else :
-                score += 0
-        
-                # 5초 동안 대기
 
     user = Main_User.objects.latest('nickname')
     user.score = score
