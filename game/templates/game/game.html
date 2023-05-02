@@ -1,52 +1,45 @@
 
 <!DOCTYPE html>
+  <body>
+    {% block content %}
+    <style>
+      .selected_img {
+        display: none;
+      }
+      .nxet-page {
+        display: none;
+      }
+    </style>
+    {% for MyModel in selected_imgs %}
+    <div class='selected_img'>
+      <img src='/static{{ MyModel }}' style="width:100px">
+      <form method="post" id="form{{ forloop.counter }}">
+        {% csrf_token %} 
+      </form>
+    </div>    
+    {% endfor %}
 
     <form method="get" id="inputElement">
       <div class = "answer">
         <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요." autofocus>
-        <input type="button" id="pass"onclick="next()" value="PASS" >
+        <input calss="pass" type="button" onclick="next()" value="PASS" >
       </div>
     </form>
-    
-  </div>
-  {% endfor %}
-<!--   <div>
-    <span id="button">
-      <form action="/main/startmain/" method="post">
-                  {% csrf_token %}
-                      <button>
-                          결과화면이동
-                      </button>
-  </div> -->
 
-  <form method="post" id="next-form" style="display: none;">
-    {% csrf_token %}
-    <input type="hidden" name="img_name" value="pass">
-    <input type="submit" id="next-submit">
-  </form>
-  <script>
-    const selected_imgs = document.querySelectorAll('.selected_img');
-    let idx = 0
-    selected_imgs[idx].style.display = 'block';
+    <div class="nxet-page">
+      {% csrf_token %}
+      <form action="/end/endgame/" method="post">
+        <button id="button" type="button" >
+          결과화면이동
+        </button>
+      </form>             
+    </div> 
+    <script>
 
-    function show() {
-      selected_imgs[idx].style.display = 'none';
-      idx += 1;
+      
+      const selected_imgs = document.querySelectorAll('.selected_img');
+      let idx = 0
       selected_imgs[idx].style.display = 'block';
-<<<<<<< Updated upstream
-    }
-
-    let time = setInterval(show, 5000);
-
-    function next() {
-      clearInterval(time);
-      show();
-      time = setInterval(show, 5000);
-    }
-
-  </script>
-  {% endblock %}
-=======
         function show() {
           selected_imgs[idx].style.display = 'none';
           idx += 1;
@@ -69,11 +62,10 @@
           inputElement.focus();
         }
         
-        let passkey = document.getElementById('pass').addEventListener('keypress', function (e) {
+        let passkey = document.querySelector('.pass').addEventListener('keypress', function (e) {
         if (e.key === 'Enter'){
         }});
     </script>
     {% endblock %}
->>>>>>> Stashed changes
   </body>
-  </html> 
+</html> 
