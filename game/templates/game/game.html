@@ -14,18 +14,17 @@
       <img src='/static{{ MyModel }}' style="width:100px">
       <form method="post" id="form{{ forloop.counter }}">
         {% csrf_token %} 
+        <form method="get" id="inputElement">
+          {% csrf_token %} 
+          <div class = "answer">
+            <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요." >
+            <button id="pass" type="button" onclick="next()" value="PASS">PASS</button>
+          </div>
+        </form>
       </form>
     </div>    
     {% endfor %}
 
-    <form method="post" id="inputElement">
-      {% csrf_token %} 
-      <div class = "answer">
-        <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요." 
-          autofocus onkeypress="if(event.keyCode===13) document.getElementById('pass').click()">
-        <button id="pass" type="button" onclick="next()" value="PASS">PASS</button>
-      </div>
-    </form>
 
     <div class="nxet-page">
       {% csrf_token %}
@@ -59,8 +58,8 @@
           clearInterval(time);
           show();
           time = setInterval(show, 5000);
-          const inputElement = document.getElementById('img_name{{ forloop.counter }}');
-          inputElement.focus();
+          //const inputElement = document.getElementById('img_name{{ forloop.counter }}');
+          //inputElement.focus();
         }
         document.addEventListener('keydown', function(event) {
           if (event.code === 'Enter') {
