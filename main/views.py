@@ -3,6 +3,7 @@ from django.contrib import messages
 from .models import Main_User
 
 def startmain(request):
+    mvplist = Main_User.objects.filter(score=20)
     if request.method == 'POST':
         print(1)
         name = request.POST.get('nickname')
@@ -18,7 +19,8 @@ def startmain(request):
             request.session['nickname'] = u.nickname
 
             return redirect('/game/startgame/',{})
-        return render(request, 'main/main.html', {})
-    return render(request, 'main/main.html', {})
+        return render(request, 'main/main.html', {'mvplist':mvplist})
+    return render(request, 'main/main.html', {'mvplist':mvplist})
+
 def static(request):
     return render(request, '/static.html')

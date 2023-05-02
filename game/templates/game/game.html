@@ -98,7 +98,7 @@
         display: none;
       }
       .next-page {
-        margin-top: 10%;
+        margin-top: 50%;
         display: none;
       }
     </style>
@@ -161,10 +161,10 @@
         }
         document.addEventListener('keyup', function(event) {
           if (event.code === 'Enter') {
+            document.querySelector('[name=img_name]').value+=' '
             event.preventDefault();
             next();
-          }
-        });
+          }});
         // let count = document.getElementById('img_name{{ forloop.counter }}'')
 
     </script>

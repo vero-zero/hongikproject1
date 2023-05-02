@@ -27,7 +27,7 @@ def startgame(request):
     # DB에서 이미지 목록 가져오기 
     items =MyModel.objects.all()
     img_list = [item.img.url for item in items]
-    selected_imgs = random.sample(set(img_list), 20)#랜덤문으로 40개의 수량만 확보 후 리스트로 재정렬
+    selected_imgs = random.sample(set(img_list), 10)#랜덤문으로 40개의 수량만 확보 후 리스트로 재정렬
     context = {'selected_imgs':selected_imgs}
 
     return render(request, 'game/game.html', context)

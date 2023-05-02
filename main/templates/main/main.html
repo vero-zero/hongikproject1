@@ -34,17 +34,13 @@
     <span class = 'glory' >명예의전당</sapn> 
     <thead>
         <tr>
-            <th>순위</th>
             <th>닉네임</th>
-            <th>점수</th>
       </tr>
     </thead>
     <tbody>
-      {% for game in games %}
+      {% for mvp in mvplist %}
       <tr>
-        <td>{{ forloop.counter }}</td>
-        <td>{{ game.player }}</td>
-        <td>{{ game.score }}</td>
+        <td>{{ mvp.nickname }}</td>
       </tr>
       {% empty %}
       <tr>
