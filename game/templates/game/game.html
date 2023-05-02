@@ -18,10 +18,12 @@
     </div>    
     {% endfor %}
 
-    <form method="get" id="inputElement">
+    <form method="post" id="inputElement">
+      {% csrf_token %} 
       <div class = "answer">
-        <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요." autofocus>
-        <input calss="pass" type="button" onclick="next()" value="PASS" >
+        <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요." 
+          autofocus onkeypress="if(event.keyCode===13) document.getElementById('pass').click()">
+        <button id="pass" type="button" onclick="next()" value="PASS">PASS</button>
       </div>
     </form>
 
@@ -60,10 +62,15 @@
           const inputElement = document.getElementById('img_name{{ forloop.counter }}');
           inputElement.focus();
         }
+        document.addEventListener('keydown', function(event) {
+          if (event.code === 'Enter') {
+            event.preventDefault();
+            next();
+          }
+        });
         
-        let passkey = document.querySelector('.pass').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter'){
-        }});
+        
+
     </script>
     {% endblock %}
   </body>
