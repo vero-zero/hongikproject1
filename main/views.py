@@ -4,14 +4,16 @@ from .models import Main_User
 
 def startmain(request):
     if request.method == 'POST':
+        print(1)
         name = request.POST.get('nickname')
-        u = Main_User()
-        u.nickname = name
-        u.save()
         if name != "":
             if Main_User.objects.filter(nickname=name).exists():
                 messages.error(request,'이미 사용중인 닉네임입니다.')
                 return redirect('/main/startmain/?msg=1')        
+            u = Main_User()
+            u.nickname = name
+            u.save()
+            print(2, name)
             return redirect('/game/startgame/',{})
         return render(request, 'main/main.html', {})
     return render(request, 'main/main.html', {})

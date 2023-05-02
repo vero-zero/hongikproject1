@@ -27,8 +27,8 @@
     
     <div class="next-page">
       {% csrf_token %}
-      <form method="post">
-        <button id="button" type="button" onclick="location = '/end/endgame/'">
+      <form method="post"{% comment %} action="/main/startmain/" {% endcomment %}>
+        <button id="button" type="submit" onclick="location = '/game/stertgame/'">
           결과화면이동
         </button>
       </form>             
