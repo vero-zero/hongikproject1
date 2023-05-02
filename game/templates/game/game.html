@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<head>
+  <title>WAYgame</title>
+  <link rel="stylesheet" href="/static/game/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+</head>
+
   <body>
     {% block content %}
     <style>
@@ -9,66 +17,67 @@
         display: none;
       }
     </style>
-    <form method="post" id="inputElement">
     {% for MyModel in selected_imgs %}
     <div class='selected_img'>
-      <img src='/static{{ MyModel }}' style="width:100px">
+      <h1>
+        누구일까요?
+      </h1>
+      <img src='/static{{ MyModel }}' class = "image-caption" >
+      <form method="post" id="form{{ forloop.counter }}">
         {% csrf_token %} 
+        <form method="get" id="inputElement">
           {% csrf_token %} 
-          <div class = "answer">
+          <div class = "answer"> 이름 : 
             <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요." >
-            <button id="pass" type="button" onclick="next()" value="PASS">PASS</button>
+            <button id="pass" type="submit" onclick="next()" value="PASS">PASS</button>
           </div>
-      </div>    
-      {% endfor %}
-      
-      <div class="next-page">
-        {% csrf_token %}
-          <button id="button" type="button" onclick="send()">
-            결과보기
-          </button>
-      </div> 
-    </form>
+        </form>
+      </form>
+    </div>  
+  {% endfor %}
+  <div class="next-page">
+      {% csrf_token %}
+      <form method="post">
+        <button id="button" type="button" onclick="location = '/end/endgame/'">
+          결과화면이동
+        </button>
+      </form>             
+    </div> 
+
+
     <script>
-      function send() {
-        document.querySelector('#inputElement').submit()
-      }
-      
       const selected_imgs = document.querySelectorAll('.selected_img');
       let idx = 0
-      show()
+      selected_imgs[idx].style.display = 'block';
         function show() {
-          if (idx >= selected_imgs.length) {
+          if (idx+1 >= selected_imgs.length) {
             clearInterval(time);
             const nxetPage = document.querySelector('.next-page');
             nxetPage.style.display = 'block';
-            const answerDisplay = document.querySelector('.active');
+            const answerDisplay = document.querySelector('.selected_img:nth-of-type(20)');
             answerDisplay.style.display = 'none';
             return;
           }
-          if(idx > 0) {
-            selected_imgs[idx-1].style.display = 'none';
-            selected_imgs[idx-1].classList.remove('active')
-          }
-          selected_imgs[idx].style.display = 'block';
-          selected_imgs[idx].classList.add('active')
-          selected_imgs[idx].querySelector('[name=img_name]').focus()
+          selected_imgs[idx].style.display = 'none';
           idx += 1;
+          selected_imgs[idx].style.display = 'block';
         }
         let time = setInterval(show, 5000);
         function next() {
           clearInterval(time);
           show();
           time = setInterval(show, 5000);
+           //const inputElement = document.getElementById('img_name{{ forloop.counter }}');
+          //inputElement.focus();
         }
-        document.addEventListener('keyup', function(event) {
+        document.addEventListener('keydown', function(event) {
           if (event.code === 'Enter') {
             event.preventDefault();
             next();
           }
         });
-        // let count = document.getElementById('img_name{{ forloop.counter }}'')
-
+        
+        
     </script>
     {% endblock %}
   </body>

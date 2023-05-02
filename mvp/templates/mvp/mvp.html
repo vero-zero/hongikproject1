@@ -1,76 +1,63 @@
-<style>
-  /* 스타워즈 엔딩 CSS */
-  @keyframes crawl {
-    from {
+<head>
+  <title>WAYgame</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.google.com/specimen/Nanum+Myeongjo?subset=korean&noto.script=Kore" rel="stylesheet">
+  <style>
+    /* 스타워즈 엔딩 CSS */
+    @keyframes crawl {
+      from {
+        transform: translateZ(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateZ(-5000px) translateY(-100vh);
+        opacity: 0;
+      }
+    }
+    #starwars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      color: #FFF700;
+      font-family: 'Nanum Myeongjo', serif;
+      overflow: hidden;
+    }
+    #starwars .crawl {
+      animation: crawl 20s linear;
       transform: translateZ(0);
       opacity: 1;
-    }
-    to {
-      transform: translateZ(-5000px) translateY(-100vh);
-      opacity: 0;
-    }
-  }
-  #starwars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    color: yellow;
-    font-size: 2rem;
-    font-family: "Roboto", sans-serif;
-    overflow: hidden;
-  }
-  #starwars .crawl {
-    animation: crawl 20s linear;
-    transform: translateZ(0);
-    opacity: 1;
-  }
 
-  #redirect-button {
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
-    font-size: 1.2rem;
-    padding: 10px 20px;
-    background-color: yellow;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-</style>
+    }  
+
+    h1 {
+      font-size: 100px;
+      color: #FF0000;
+    }
+
+    ul {
+      font-size: 75px;
+      color: #FFF815;
+    }
+  </style>
+</head>
 <body>
-  <!-- 스타워즈 엔딩 템플릿 -->
-  <div id="starwars">
-    <div class="crawl">
-      <h1>영광의 MVP</h1>
-      <ul>
+    <!-- 스타워즈 엔딩 템플릿 -->
+    <div id="starwars">
+        <div class="crawl">
+        <h1>  MVP </h1>
+    <div class = "box"
+        <ul>
         {% for mvp in mvplist %}
         <li>{{mvp.nickname}}</li>
         {% endfor %}
-      </ul>
+        </ul>
+        </div>
     </div>
-  </div>
-
-   <!-- 버튼 -->
-   <button id="redirect-button">메인 화면으로</button>
-
-   <script>
-     // 버튼 클릭 이벤트 처리
-     document.getElementById("redirect-button").addEventListener("click", function() {
-       window.location.href = "http://127.0.0.1:8000/main/startmain/";
-     });
-
-
-
-     
-   </script>
- </body>
-
-
-
+</body>
