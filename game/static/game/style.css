@@ -1,10 +1,13 @@
 body {
   text-align: center;
   font-family: 'Gowun Dodum', sans-serif;
-  background-color: #F9EBFF;
-}
+  background-image: linear-gradient(to top, #ff837c 1%, #97d9e1 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  }
 
-h1 {
+  h1 {
   font-size: 25px;
   display: flex;
   margin-top: 10px;
@@ -14,71 +17,78 @@ h1 {
   margin-bottom: 0px;
   color: #8B03D6;
   font-weight: bold;
-}
+  }
 
-.selected_img {
+  .selected_img {
   position: relative;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 100px;
   display: none;
-}
+  }
 
-.selected_img .image-caption {
+  .selected_img .image-caption {
   width: auto;
   height: 280px;
   position: relative;
   margin-top: 30px;
-}
+  }
 
-.selected_img .src{
+  .selected_img .src{
   max-width: auto;
   max-height: 280px;
   width:100px;
-}
+  }
 
-label {
+  label {
   font-size: 25px; 
   font-weight: bold; 
   margin-top: 0px;
   margin-bottom: 10px;
-  
-}
 
- /* 선택자확인 */
- input[type="text"]{
+  }
+
+  input[type="text"]{
   padding: 5px;
   border-radius: 5px;
   border: none;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   height: 30px;
-}
+  }
 
 
-button[type="button"] {
+  button[id="pass"] {
   font-size: 15px; 
   background-color: #ff837c;
   color: #fff;
   padding: 10px;
   border: none;
+  border-radius: 2px;
   cursor: pointer;
   width: 80px;
   height: 40px;
   margin: 10px auto 0;
   text-align: center;
   line-height: 10px;
-}
+  }
 
-button[id = "button"] {
+  button[id = "button"] {
+  font-family: 'Gowun Dodum', sans-serif;
   font-size: 15px; 
   background-color: #ff837c;
   color: #fff;
   padding: 10px;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
   width: 120px;
   height: 40px;
   margin: 10px auto 0;
-  margin-top: 100px;
+  margin-top: 45px;
+  }
 
-}
+  .next-page {
+  color: #fff;
+  margin-top: 80px;
+  font-size: 30px;
+  }

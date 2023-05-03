@@ -13,21 +13,20 @@
       opacity: 1; 
     }
     to {
-      transform: translateZ(-5000px) translateY(-100vh);
+      transform: translateZ(-6000px) translateY(-130vh);
       opacity: 0;
     }
   }
   #starwars {
     position: fixed;
-    top: 0;
+    top: 120px;
     left: 0;
     height: 90%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:  #F9EBFF;
-    color: #FFF700;
+    background-color: linear-gradient(to top, #d9afd9 1%, #97d9e1 100%);
     font-family: 'Gowun Dodum', sans-serif;
     overflow: hidden;
   }
@@ -38,17 +37,20 @@
 
   }
   body {text-align: center;
-    background-color:  #F9EBFF;}
+  background-image: linear-gradient(to top, #ff837c 1%, #97d9e1 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
+  }
 
   h1 {
     font-size: 100px;
     color: #fff;
-    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
-    0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
-    text-shadow:[x-offset] [y-offset] [blur-radius] [color] 
+    text-shadow: 0 0 7px #ff837c, 0 0 10px #ff837c, 0 0 5px #ff837c, 0 0 42px #ff837c;,
+  0 0 82px #ff837c;;, 0 0 92px #ff837c;, 0 0 102px #ff837c;, 0 0 151px #ff837c;;
+    
   }
   
-
   ul {
     text-align:center;
     font-size: 75px;
@@ -64,19 +66,20 @@
     text-shadow:/* Green glow */ 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa; ;
   }
   p {
-    color: dimgrey;
+    color: 22004D;
+    font-size : 30px;
   }
   button[id = "button"] {
-
       font-size: 15px;
-      color: gray;
-      background-color:  #F9EBFF;
+      color: #05002D;
+      backgro #F9EBFF;und-color: 
       justify-content: center;
       border: none;
+      border-radius : 5px;
       cursor: pointer;
       width: 120px;
       height: 40px;
-      margin-top: 45%;
+      margin-top: 450px;
       font-family: 'Gowun Dodum', sans-serif;
       }
   button:hover {
@@ -93,45 +96,19 @@
 </style>
 </head>
 <body>
+  <h1>Most Valuable Player</h1>
   <!-- 스타워즈 엔딩 템플릿 -->
   <div id="starwars">
-    
+
     <div class="crawl">
       <br>
       <br>
       <br>
+      {% for mvp in mvplist %}
+      <ul>{{mvp.nickname}}</ul>
+      {% endfor %}
       <br>
       <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <h1>Most Valuable Player</h1>
-      <ul>
-        {% for mvp in mvplist %}
-        <ul>{{mvp.nickname}}</ul>
-        {% endfor %}
-      </ul>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>      
-      <br>
-      <br>      
-      <br>
-      <br>      
-      <br>
-      <br>
-      
 
       <p>제작 : 4인의 제작자.</p>
       <p>배급 : 홍익대 403호</p>

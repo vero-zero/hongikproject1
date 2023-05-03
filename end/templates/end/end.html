@@ -1,11 +1,10 @@
+<title>WAYgame</title>
+<link rel="stylesheet" href="/static/end/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 
-
-<style>
- 
-
+{% comment %} <style>
   body {
   text-align: center;
   font-family: 'Gowun Dodum', sans-serif;
@@ -63,22 +62,37 @@
   
   }
 
-</style>
-
+</style> {% endcomment %}
 <body>
-  
   {% csrf_token %}
   <h1>
-
-  '{{user.nickname}} '님 
+   '{{user.nickname}} '님 
   <br> 
   {{user.score}} 점
+  </h1>
+  <div class="button_container">
+    <p class="description">게임 해주셔서 감사합니다.</p>
+    <div class="link">
+      <button id ="button" class="btn redirect1()">
+       <span>
+        메인화면으로
+       </span> 
+      </button>
+      <br>
+      <button id ="button" class="btn redirect2()">
+        <span>
+          MVP보러가기
+        </span>
+      </button>
 
- 
-</h1>
-<span>
-  <button id="button"onclick="redirect1()">RESTART</button>
-  <button id="button"onclick="redirect2()">MVP</button>
+    </div>
+    <!--<p class="link">
+      Design by 
+      <a href="https://dribbble.com/skytrip" target="_blank">SkyTrip</a>
+    </p>-->
+  </div>
+
+
   <script>
     function redirect1() {
       window.location.href = "http://127.0.0.1:8000/main/startmain/";
@@ -88,6 +102,5 @@
       window.location.href = "http://127.0.0.1:8000/mvp/mvplist/";
     }
     </script>
-  </span>
 
 </body>

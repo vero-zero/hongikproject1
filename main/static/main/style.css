@@ -1,14 +1,9 @@
-.box {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  background-color: #FCFFE3;
-  padding: 10px 10px;
-  border: 4px solid #EFFD86;
-  width: 269px;
-  height: 80px;
-  margin-left: auto;
-  margin-right: auto;
-  
+ body {
+  background-image: linear-gradient(to top, #ff837c 1%, #97d9e1 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
+  font-family: 'Gowun Dodum', sans-serif;
 }
 
 h1 {
@@ -88,11 +83,6 @@ button {
 }
 
 
-body {
-  font-family: 'Gowun Dodum', sans-serif;
-  background-color: #F9EBFF;
-}
-
 table {
   font-size: 30px;
   margin: 0 auto;
@@ -148,6 +138,7 @@ tr {
   color:darkblue;
 }
 
-#rule1, #rule2, #rule3 {
+#rule {
   color: #090003;
+  size: 50px;
 }
