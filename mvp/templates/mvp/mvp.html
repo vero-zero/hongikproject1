@@ -2,7 +2,7 @@
   <title>WAYgame</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.google.com/specimen/Nanum+Myeongjo?subset=korean&noto.script=Kore" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 
 
 <style>
@@ -10,7 +10,7 @@
   @keyframes crawl {
     from {
       transform: translateZ(0);
-      opacity: 1;
+      opacity: 1; 
     }
     to {
       transform: translateZ(-5000px) translateY(-100vh);
@@ -21,14 +21,14 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%;
+    height: 90%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color:  #F9EBFF;
     color: #FFF700;
-    font-family: 'Nanum Myeongjo', serif;
+    font-family: 'Gowun Dodum', sans-serif;
     overflow: hidden;
   }
   #starwars .crawl {
@@ -36,38 +36,116 @@
     transform: translateZ(0);
     opacity: 1;
 
-  }  
+  }
+  body {text-align: center;
+    background-color:  #F9EBFF;}
 
   h1 {
     font-size: 100px;
-    color: #FF0000;
+    color: #fff;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
+    0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+    text-shadow:[x-offset] [y-offset] [blur-radius] [color] 
   }
+  
 
   ul {
+    text-align:center;
     font-size: 75px;
-    color: #FFF815;
+    color: #fff;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
+    0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
   }
+ ul:hover {
+    transition: font-size 1s ease-out;
+    text-align:center;
+    font-size: 100px;
+    color: #fff; 
+    text-shadow:/* Green glow */ 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa; ;
+  }
+  p {
+    color: dimgrey;
+  }
+  button[id = "button"] {
+
+      font-size: 15px;
+      color: gray;
+      background-color:  #F9EBFF;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      width: 120px;
+      height: 40px;
+      margin-top: 45%;
+      font-family: 'Gowun Dodum', sans-serif;
+      }
+  button:hover {
+
+        /*rgb컬러a알파 0~1까지 화이트 0.3만큼 알파 혹은 반투명*/
+        background: rgba(255, 255, 255, 0.3);
+        /* 변형할 것은 배경 1초, 빠른 시작 서서히 감속*/
+        transition: background 1s ease-out;
+        color: #fff;
+}
+
+  
+
 </style>
 </head>
 <body>
   <!-- 스타워즈 엔딩 템플릿 -->
   <div id="starwars">
+    
     <div class="crawl">
-      <h1>영광의 MVP</h1>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h1>Most Valuable Player</h1>
       <ul>
         {% for mvp in mvplist %}
-        <li>{{mvp.nickname}}</li>
+        <ul>{{mvp.nickname}}</ul>
         {% endfor %}
       </ul>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>      
+      <br>
+      <br>      
+      <br>
+      <br>      
+      <br>
+      <br>
+      
+
+      <p>제작 : 4인의 제작자.</p>
+      <p>배급 : 홍익대 403호</p>
+   
+      </div>
+      <!-- 버튼 -->
     </div>
-  </div>
-
-   <!-- 버튼 -->
-   <button id="redirect-button">메인 화면으로</button>
-
-   <script>
+      <div>
+        <button id="button">메인 화면으로</button>
+      </div>
+        
+      <script>
      // 버튼 클릭 이벤트 처리
-     document.getElementById("redirect-button").addEventListener("click", function() {
+     document.getElementById("button").addEventListener("click", function() {
        window.location.href = "http://127.0.0.1:8000/main/startmain/";
      });
 

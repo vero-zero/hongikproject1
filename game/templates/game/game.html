@@ -98,21 +98,20 @@
         display: none;
       }
       .next-page {
-        margin-top: 50%;
+        margin-top: 50px;
         display: none;
       }
     </style>
     <form method="post" id="inputElement">
     {% for MyModel in selected_imgs %}
-    <div class='selected_img'>
+    <div class='selected_img' id="{{ forloop.counter }}">
       <h1>
         누구일까요?
       </h1>
       <img src='/static{{ MyModel }}' class = "image-caption">
-        {% csrf_token %} 
           {% csrf_token %} 
           <div class = "answer"> 이름 : 
-            <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="입력해주세요." >
+            <input type="text" name="img_name" id="img_name{{ forloop.counter }}" placeholder="Please click on the passkey " >
             <button id="pass" type="button" onclick="next()" value="PASS">PASS</button>
           </div>
       </div>    
@@ -161,9 +160,12 @@
         }
         document.addEventListener('keyup', function(event) {
           if (event.code === 'Enter') {
-            document.querySelector('[name=img_name]').value+=' '
-            event.preventDefault();
-            next();
+            let value = 
+              document.querySelector('.active [name=img_name]').value;
+              if (value=="")return
+              document.querySelector('.active [name=img_name]').value = value
+              event.preventDefault();
+              next();
           }});
         // let count = document.getElementById('img_name{{ forloop.counter }}'')
 

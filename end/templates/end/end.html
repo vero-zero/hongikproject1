@@ -1,16 +1,93 @@
-{% csrf_token %}
-<hr>
-{{user.nickname}}
-{{user.score}}
-<hr>
-<button onclick="redirect1()">Restart</button>
-<button onclick="redirect2()">명예의전당</button>
-<script>
-  function redirect1() {
-    window.location.href = "http://127.0.0.1:8000/main/startmain/";
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+
+<style>
+ 
+
+  body {
+  text-align: center;
+  font-family: 'Gowun Dodum', sans-serif;
+  background-color: #F9EBFF;
+  margin-bottom: 100%;
   }
 
-  function redirect2() {
-    window.location.href = "http://127.0.0.1:8000/mvp/mvplist/";
+  h1 {
+  text-align: center;
+  font-size: 3em;
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  margin-top: 15%;
+/*   margin-left: 50%; */
+  margin-bottom: 100px;
+  color: #8B03D6;
+  font-weight: bold;
   }
-</script>
+
+
+
+
+
+  /* 선택자확인 */
+
+
+  button {
+  
+  font-size: 100%; 
+  background-color: #ff837c;
+  background-size: 200;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 120px;
+  height: 40px;
+  margin: 100px,15px,10px,15px;
+
+  font-family: 'Gowun Dodum', sans-serif;
+
+  }
+  button:hover {
+  
+  font-size: 100%; 
+  background-color: hsl(281, 100%, 59%);
+  background-size: 100%;
+  color: #fff;
+ 
+  }
+
+
+  span {background-size: 200;
+  
+  }
+
+</style>
+
+<body>
+  
+  {% csrf_token %}
+  <h1>
+
+  '{{user.nickname}} '님 
+  <br> 
+  {{user.score}} 점
+
+ 
+</h1>
+<span>
+  <button id="button"onclick="redirect1()">RESTART</button>
+  <button id="button"onclick="redirect2()">MVP</button>
+  <script>
+    function redirect1() {
+      window.location.href = "http://127.0.0.1:8000/main/startmain/";
+    }
+    
+    function redirect2() {
+      window.location.href = "http://127.0.0.1:8000/mvp/mvplist/";
+    }
+    </script>
+  </span>
+
+</body>
