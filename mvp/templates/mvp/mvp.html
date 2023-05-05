@@ -1,0 +1,137 @@
+<head>
+  <title>WAYgame</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+
+<style>
+  /* 스타워즈 엔딩 CSS */
+  @keyframes crawl {
+    from {
+      transform: translateZ(0);
+      opacity: 1; 
+    }
+    to {
+      transform: translateZ(-6000px) translateY(-130vh);
+      opacity: 0;
+    }
+  }
+  #starwars {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: linear-gradient(to top, #d9afd9 1%, #97d9e1 100%);
+    font-family: 'Gowun Dodum', sans-serif;
+    overflow: hidden;
+  }
+  #starwars .crawl {
+    animation: crawl 20s linear;
+    transform: translateZ(0);
+    opacity: 1;
+
+  }
+  body {text-align: center;
+  background-image: linear-gradient(to top, #ff837c 1%, #97d9e1 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
+  }
+
+  h1 {
+    font-size: 100px;
+    color: #fff;
+    text-shadow: 0 0 7px #ff837c, 0 0 10px #ff837c, 0 0 5px #ff837c, 0 0 42px #ff837c;,
+  0 0 82px #ff837c;;, 0 0 92px #ff837c;, 0 0 102px #ff837c;, 0 0 151px #ff837c;;
+    
+  }
+  
+  ul {
+    text-align:center;
+    font-size: 75px;
+    color: #fff;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
+    0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+  }
+ ul:hover {
+    transition: font-size 1s ease-out;
+    text-align:center;
+    color: #fff; 
+    text-shadow:/* Green glow */ 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa; ;
+  }
+  p {
+    color: 22004D;
+    font-size : 30px;
+  }
+  button[id = "button"] {
+      position:fixed;
+      font-size: 15px;
+      color: #05002D;
+      background-color: #F9EBFF;
+      opacity:0.5;
+      justify-content: center;
+      border: none;
+      border-radius : 5px;
+      cursor: pointer;
+      width: 120px;
+      height: 40px;
+      margin-top: 100px;
+      font-family: 'Gowun Dodum', sans-serif;
+      }
+  button:hover {
+
+        /*rgb컬러a알파 0~1까지 화이트 0.3만큼 알파 혹은 반투명*/
+        background: rgba(255, 255, 255, 0.3);
+        /* 변형할 것은 배경 1초, 빠른 시작 서서히 감속*/
+        transition: background 1s ease-out;
+        color: #fff;
+}
+
+  
+
+</style>
+</head>
+<body>
+  <h1>Most Valuable Player</h1>
+  <!-- 스타워즈 엔딩 템플릿 -->
+  <div id="starwars">
+
+    <div class="crawl">
+      <br>
+      <br>
+      <br>
+      {% for mvp in mvplist %}
+      <ul>{{mvp.nickname}}</ul>
+      {% endfor %}
+      <br>
+      <br>
+
+      <p>제작 : 4인의 제작자.</p>
+      <p>배급 : 홍익대 403호</p>
+   
+      </div>
+      <!-- 버튼 -->
+      <div>
+        <button id="button">메인 화면으로</button>
+      </div>
+    </div>
+        
+      <script>
+     // 버튼 클릭 이벤트 처리
+     document.getElementById("button").addEventListener("click", function() {
+       window.location.href = "http://127.0.0.1:8000/main/startmain/";
+     });
+
+
+
+     
+   </script>
+ </body>
+
+
+
